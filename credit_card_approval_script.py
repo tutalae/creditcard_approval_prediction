@@ -8,8 +8,8 @@ import xgboost as xgb
 from imblearn.over_sampling import SMOTE
 
 def load_data(path_1, path_2):
-    data_1 = pd.read_parquet(path_1)
-    data_2 = pd.read_parquet(path_2)
+    data_1 = pd.read_csv(path_1)
+    data_2 = pd.read_csv(path_2)
 
     # find all users' account open month.
     begin_month = pd.DataFrame(data_2.groupby(["ID"])["MONTHS_BALANCE"].agg(min))
