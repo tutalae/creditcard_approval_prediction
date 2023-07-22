@@ -1,0 +1,29 @@
+artifact_path: model
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.11.3
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.core.Booster
+    model_format: xgb
+    xgb_version: 1.7.6
+mlflow_version: 2.5.0
+model_uuid: b0b3040c3bce4c89bcba5c31a9ddeb1b
+run_id: b4cf3e480afa440586271ca261be8845
+signature:
+  inputs: '[{"type": "integer", "name": "FLAG_OWN_CAR"}, {"type": "integer", "name":
+    "FLAG_OWN_REALTY"}, {"type": "integer", "name": "CNT_CHILDREN"}, {"type": "integer",
+    "name": "AMT_INCOME_TOTAL"}, {"type": "integer", "name": "NAME_INCOME_TYPE"},
+    {"type": "integer", "name": "NAME_EDUCATION_TYPE"}, {"type": "integer", "name":
+    "NAME_FAMILY_STATUS"}, {"type": "integer", "name": "NAME_HOUSING_TYPE"}, {"type":
+    "integer", "name": "DAYS_BIRTH"}, {"type": "integer", "name": "DAYS_EMPLOYED"},
+    {"type": "integer", "name": "FLAG_MOBIL"}, {"type": "integer", "name": "OCCUPATION_TYPE"},
+    {"type": "integer", "name": "CNT_FAM_MEMBERS"}, {"type": "integer", "name": "begin_month"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float32", "shape": [-1]}}]'
+utc_time_created: '2023-07-22 14:42:08.633641'

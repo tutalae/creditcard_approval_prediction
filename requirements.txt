@@ -6,7 +6,7 @@ seaborn
 hyperopt
 xgboost
 fastparquet
-prefect==2.0b6
+prefect==2.10
 flask
 streamlit
 numba
