@@ -18,3 +18,4 @@ scikit-learn
 matplotlib
 seaborn
 Jupyter Notebook
+ydata_profiling

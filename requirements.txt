@@ -12,3 +12,6 @@ streamlit
 numba
 shap
 evidently
+ydata_profiling
+imblearn
+
