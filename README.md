@@ -25,10 +25,10 @@ Data preprocessing involved handling missing values, converting categorical vari
 ![Data Imbalance](https://github.com/tutalae/creditcard_approval_prediction/blob/main/results/imbalance%20data.png)
 
 ## Experiments
-During the experimentation phase, several models including RandomForest, ElasticNet, DecisionTree, GradientBoosting and XGBoost were evaluated using different hyperparameters. MLflow was used to track the experiments. Performance was evaluated based on RMSE, MAE, and R2 metrics.
+During the experimentation phase, several models including RandomForest, LogisticRegression, DecisionTree, GradientBoosting and XGBoost were evaluated using different hyperparameters. MLflow was used to track the experiments. Performance was evaluated based on RMSE, MAE, and R2 metrics.
 
 ## Running the Scripts
-All the code and experiments are contained in the Jupyter notebook 'simple_exp_tracking_mlflow.ipynb'. You can run this notebook using Jupyter Notebook or Jupyter Lab.
+All the code and experiments are contained in the Jupyter notebook 'experiment_tracking_mlflow.ipynb'. You can run this notebook using Jupyter Notebook or Jupyter Lab.
 
 To start the notebook, navigate to the project directory in the terminal and type 'jupyter notebook' or 'jupyter lab'. This will start the Jupyter server and open a tab in your web browser where you can select and run the notebook.
 
@@ -46,33 +46,28 @@ The results of the model evaluations and some visualizations can be found in the
 
 ## Folder Structure and File Descriptions
 - data: This folder contains the dataset files.
-- simple_exp_tracking_mlflow.ipynb: This is the main Jupyter notebook that contains all the code.
+- experiment_tracking_mlflow.ipynb: This is the main Jupyter notebook that contains all the code.
 - results: This folder contains results and visualizations.
 - requirements.txt: This file lists the Python dependencies.
 
 ## Experiments and Conclusion
 We conducted extensive model training and evaluation experiments, which were tracked using the `mlflow` library. The models and their configurations were selected using the `ParameterGrid` function, which allowed us to easily explore a wide range of hyperparameters for each model.
 
-We observed that the performance of the models varied significantly based on their configurations. Here are some of the results:
+The performance of the models varied significantly based on their configurations. All the results are logged and can be reviewed in the mlflow interface.
 
-- The RandomForest model achieved an RMSE of 0.374, an MAE of 0.205, and an R2 score of 0.441 when configured with no maximum depth and 10 estimators.
+After sorting the models based on the F1 score, the Gradient Boosting model emerged as the top-performing model, with the following metrics:
 
-- The XGBoost model achieved an RMSE of 0.319, an MAE of 0.222, and an R2 score of 0.593 when configured with a learning rate of 1.0 and 150 estimators.
+- Accuracy: 0.946
+- Precision: 0.991
+- Recall: 0.901
+- F1 Score: 0.944
 
-More results are shown in the mlflow log.
+This model was configured with a learning rate of 1.0 and 150 estimators.
 
-After sorting the models based on the RMSE metric, the XGBoost model emerged as the top-performing model, with the following metrics:
+![F1 Scores Comparison between models](https://github.com/tutalae/creditcard_approval_prediction/blob/main/results/f1%20scores.png)
 
-- RMSE: 0.251
-- MAE: 0.169
-- R2: 0.749
+In conclusion, the Gradient Boosting model, with a learning rate of 1.0 and 150 estimators, provided the best results in terms of creditworthiness prediction.
 
-This model was configured with a learning rate of 0.1 and 150 estimators.
+The success of the Gradient Boosting model could be attributed to its gradient boosting framework, which effectively handles both linear and non-linear relationships in the data. Gradient Boosting is an ensemble learning method that sequentially combines predictions from multiple decision trees to minimize the error rate. This allows it to capture complex patterns and interactions between variables that some other models might miss.
 
-![RMSE Comparison between models](https://github.com/tutalae/creditcard_approval_prediction/blob/main/results/RMSE%20scores.png)
-
-In conclusion, the XGBoost model with a learning rate of 0.1 and 150 estimators provided the best results in terms of predicting creditworthiness. 
-
-The success of the XGBoost model could be attributed to its gradient boosting framework, which effectively handles both linear and non-linear relationships in the data. XGBoost, an ensemble learning method, sequentially combines predictions from multiple decision trees to minimize the error rate. This gives it the ability to capture complex patterns and interactions between variables that some other models may miss.
-
-However, we acknowledge that this conclusion is based on the specific dataset and experimental setup we used. It would be beneficial to perform additional tests with different data and configurations to validate these findings and further improve the model's performance
+However, we acknowledge that this conclusion is based on the specific dataset and experimental setup we used. It would be beneficial to perform additional tests with different data and configurations to validate these findings and further improve the model's performance.
