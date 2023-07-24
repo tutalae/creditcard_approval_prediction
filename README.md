@@ -20,7 +20,9 @@ pip install -r requirements.txt
 This command needs to be run in the terminal after navigating to the directory containing the 'requirements.txt' file.
 
 ## Data Preprocessing
-Data preprocessing involved handling missing values, converting categorical variables into numerical form, and balancing the target variable using SMOTE technique.
+Data preprocessing involved handling missing values, converting categorical variables into numerical form, and balancing the target variable using SMOTE technique due to our imbalnce data as following picture.
+
+![Data Imbalance](results/imbalance data.png)
 
 ## Experiments
 During the experimentation phase, several models including RandomForest and ElasticNet were evaluated using different hyperparameters. MLflow was used to track the experiments. Performance was evaluated based on RMSE, MAE, and R2 metrics.
@@ -39,10 +41,14 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db
 
 from the project directory. This will start the MLflow server and provide a local URL that you can open in your web browser to view the experiment results.
 
+## Results and Visualizations
+The results of the model evaluations and some visualizations can be found in the 'results' folder. They provide insights into the performance of the models and the importance of different features.
+
 ## Folder Structure and File Descriptions
-data: This folder contains the dataset files.
-simple_exp_tracking_mlflow.ipynb: This is the main Jupyter notebook that contains all the code.
-requirements.txt: This file lists the Python dependencies.
+- data: This folder contains the dataset files.
+- simple_exp_tracking_mlflow.ipynb: This is the main Jupyter notebook that contains all the code.
+- results: This folder contains results and visualizations.
+- requirements.txt: This file lists the Python dependencies.
 
 ## Conclusion and Future Work
 
@@ -51,6 +57,8 @@ After a thorough analysis of our data and model experimentation using MLflow, th
 The RandomForest model performed best with a maximum depth of 10 and 50 estimators. These parameters seem to provide the RandomForest model with a good balance between bias and variance, allowing it to capture complex patterns in the data without overfitting.
 
 Our key performance metrics were RMSE, MAE, and R2, with the RMSE being the primary metric. The best model achieved an RMSE of 0.35, an MAE of 0.235, and an R2 score of 0.509. The RMSE and MAE tell us that our model's predictions are, on average, about 0.35 and 0.235 units away from the true values respectively. An R2 score of 0.509 indicates that about 50.9% of the variance in the target variable can be explained by our model.
+
+![RMSE Comparison between models](results/RMSE scores.png)
 
 The success of the RandomForest model could be attributed to its inherent ability to manage non-linearity in the data. RandomForest, being an ensemble model of decision trees, can capture complex patterns and interactions between variables that linear models may miss.
 
