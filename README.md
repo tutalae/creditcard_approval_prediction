@@ -2,23 +2,49 @@
 ## Overview
 This project aims to predict credit card approval decisions based on various features related to credit history, financial information, and personal details of applicants. The goal is to build a machine learning model that can accurately predict whether a credit card application will be approved or rejected by the issuing authority.
 
-Dataset
+## Dataset
 The dataset used in this project contains historical credit card application data, including both approved and rejected applications. It includes features such as applicant's age, income, credit score, employment status, debt-to-income ratio, and more.
 
-The dataset is stored in the data directory and is split into two files: credit_card_applications.csv and credit_card_labels.csv. The credit_card_applications.csv file contains the feature data, while the credit_card_labels.csv file contains the corresponding labels (0 for rejected and 1 for approved).
+The dataset is stored in the 'data' directory and is split into two files: 'credit_card_applications.csv' and 'credit_card_labels.csv'. The 'credit_card_applications.csv' file contains the feature data, while the 'credit_card_labels.csv' file contains the corresponding labels (0 for rejected and 1 for approved).
 
 ## Requirements
-To run the code and reproduce the results, you need the following dependencies:
+To run the code and reproduce the results, you need the dependencies in 'requirements.txt' file.
 
-Python 3.x
-pandas
-scikit-learn
-matplotlib
-seaborn
-Jupyter Notebook
-ydata_profiling
+## Installation
+You can install the required packages using the following command:
 
-## Experiment conclusion
+<pre>
+pip install -r requirements.txt
+</pre>
+
+This command needs to be run in the terminal after navigating to the directory containing the 'requirements.txt' file.
+
+## Data Preprocessing
+Data preprocessing involved handling missing values, converting categorical variables into numerical form, and balancing the target variable using SMOTE technique.
+
+## Experiments
+During the experimentation phase, several models including RandomForest and ElasticNet were evaluated using different hyperparameters. MLflow was used to track the experiments. Performance was evaluated based on RMSE, MAE, and R2 metrics.
+
+## Running the Scripts
+All the code and experiments are contained in the Jupyter notebook 'simple_exp_tracking_mlflow.ipynb'. You can run this notebook using Jupyter Notebook or Jupyter Lab.
+
+To start the notebook, navigate to the project directory in the terminal and type 'jupyter notebook' or 'jupyter lab'. This will start the Jupyter server and open a tab in your web browser where you can select and run the notebook.
+
+## MLflow Tracking
+Experiments and model performance metrics were logged using MLflow. To view the experiment results, start the MLflow server using the command 
+
+<pre>
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+</pre>
+
+from the project directory. This will start the MLflow server and provide a local URL that you can open in your web browser to view the experiment results.
+
+## Folder Structure and File Descriptions
+data: This folder contains the dataset files.
+simple_exp_tracking_mlflow.ipynb: This is the main Jupyter notebook that contains all the code.
+requirements.txt: This file lists the Python dependencies.
+
+## Conclusion and Future Work
 
 After a thorough analysis of our data and model experimentation using MLflow, the RandomForest model emerged as the best performing model in predicting creditworthiness of individuals.
 
