@@ -80,9 +80,20 @@ def main():
     # Make prediction
     prediction = model.predict(user_data)
 
+    # Prepare the images for "Approved" and "Not Approved" outcomes
+    approved_image = "picture/approved_image.jpg"  # Replace with the path to your approved image
+    not_approved_image = "picture/not_approved_image.jpg"  # Replace with the path to your not approved image
+
     # Show the prediction
     if st.button("Predict"):
-        st.write(f"Loan Status: {'Approved' if prediction[0] == 1 else 'Not Approved'}")
+        loan_status = 'Approved' if prediction[0] == 1 else 'Not Approved'
+        st.write(f"Loan Status: {loan_status}")
+
+        # Display the corresponding image based on the prediction
+        if loan_status == 'Approved':
+            st.image(approved_image, caption="Loan Approved", use_column_width=True)
+        else:
+            st.image(not_approved_image, caption="Loan Not Approved", use_column_width=True)
 
 if __name__ == "__main__":
     main()
