@@ -1,0 +1,30 @@
+artifact_path: GradientBoosting_model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.3.0
+mlflow_version: 2.5.0
+model_uuid: 32770d6556a94d148e678a5c39fc9ddc
+run_id: 5544122db1ff4a91beb76fe4eb70ccae
+signature:
+  inputs: '[{"type": "integer", "name": "CODE_GENDER"}, {"type": "integer", "name":
+    "FLAG_OWN_CAR"}, {"type": "integer", "name": "FLAG_OWN_REALTY"}, {"type": "long",
+    "name": "CNT_CHILDREN"}, {"type": "double", "name": "AMT_INCOME_TOTAL"}, {"type":
+    "integer", "name": "NAME_INCOME_TYPE"}, {"type": "integer", "name": "NAME_EDUCATION_TYPE"},
+    {"type": "integer", "name": "NAME_FAMILY_STATUS"}, {"type": "integer", "name":
+    "NAME_HOUSING_TYPE"}, {"type": "long", "name": "DAYS_BIRTH"}, {"type": "long",
+    "name": "DAYS_EMPLOYED"}, {"type": "long", "name": "FLAG_MOBIL"}, {"type": "integer",
+    "name": "OCCUPATION_TYPE"}, {"type": "double", "name": "CNT_FAM_MEMBERS"}, {"type":
+    "double", "name": "begin_month"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int32", "shape": [-1]}}]'
+utc_time_created: '2023-07-26 16:32:09.958228'
