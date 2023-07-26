@@ -57,10 +57,10 @@ The performance of the models varied significantly based on their configurations
 
 After sorting the models based on the F1 score, the Gradient Boosting model emerged as the top-performing model, with the following metrics:
 
-- Accuracy: 0.946
-- Precision: 0.991
-- Recall: 0.901
-- F1 Score: 0.944
+- F1           0.834885
+- Recall        0.80227
+- Precision    0.870265
+- Accuracy     0.841336
 
 This model was configured with a learning rate of 1.0 and 150 estimators.
 
