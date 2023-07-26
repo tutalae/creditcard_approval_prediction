@@ -62,7 +62,7 @@ After sorting the models based on the F1 score, the Gradient Boosting model emer
 - Precision    0.870265
 - Accuracy     0.841336
 
-This model was configured with a learning rate of 1.0 and 150 estimators.
+This model was configured with a learning rate of 0.1 and 50 estimators.
 
 ![F1 Scores Comparison between models](https://github.com/tutalae/creditcard_approval_prediction/blob/main/results/f1%20scores.png)
 
