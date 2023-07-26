@@ -1,6 +1,6 @@
 # Credit Card Approval Prediction
 ## Overview
-This project aims to predict credit card approval decisions based on various features related to credit history, financial information, and personal details of applicants. The goal is to build a machine learning model that can accurately predict whether a credit card application will be approved or rejected by the issuing authority.
+The goal of our project is to develop a predictive model that can accurately assess credit card applications and predict whether an applicant will be approved or rejected based on various features. By automating the credit card approval process, we aim to improve efficiency, reduce manual effort, and minimize the risk of human bias in decision-making. By better predicting defaults, the bank can reduce the default rate and better manage its credit risk and ensure its financial stability.
 
 ## Dataset
 The dataset used in this project contains historical credit card application data, including both approved and rejected applications. It includes features such as applicant's age, income, credit score, employment status, debt-to-income ratio, and more.
