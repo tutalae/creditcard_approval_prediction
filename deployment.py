@@ -1,3 +1,4 @@
+import datetime
 import streamlit as st
 import pandas as pd
 import joblib
@@ -28,38 +29,54 @@ def main():
     education_type = st.selectbox("Education Type", ["Secondary / secondary special", "Higher education", "Incomplete higher", "Lower secondary", "Academic degree"])
     family_status = st.selectbox("Family Status", ["Single / not married", "Married", "Civil marriage", "Separated", "Widow"])
     housing_type = st.selectbox("Housing Type", ["House / apartment", "Municipal apartment", "With parents", "Co-op apartment", "Rented apartment", "Office apartment"])
-    days_birth = st.slider("Days since Birth", min_value=-23198, max_value=-7980, step=1)
-    days_employed = st.slider("Days Employed", min_value=-10490, max_value=-65, step=1)
+    
+    # Calculate 80 years ago from today
+    today = datetime.date.today()
+    eighty_years_ago = today - datetime.timedelta(days=80*365)
+
+    # Create the date input widgets
+    days_birth = st.date_input("Select Days since Birth", eighty_years_ago, min_value=eighty_years_ago, max_value=today)
+    st.write('Your birthday is:', days_birth)
+    
+    days_employed = st.date_input("Select Days Employed", eighty_years_ago, min_value=eighty_years_ago, max_value=today)
+    st.write('Your employment date is:', days_employed)    
+
     has_mobile = st.selectbox("Has Mobile", ["No", "Yes"])
     occupation_type = st.selectbox("Occupation Type", ["Laborers", "Core staff", "Accountants", "Managers", "Drivers", "Sales staff", "Cleaning staff", "Cooking staff", "Private service staff", "Medicine staff", "Security staff", "High skill tech staff", "Waiters/barmen staff", "Low-skill Laborers", "Realty agents", "Secretaries", "IT staff", "HR staff", "Private service staff", "Uncategorized"])
     num_family_members = st.slider("Number of Family Members", min_value=1, max_value=20, step=1)
-    begin_month = st.slider("Begin Month", min_value=-60, max_value=0, step=1)
-
+    begin_month = st.slider("Time as Customer(Months)", min_value=0, max_value=60, step=1)
+    
     # Make a prediction
     user_data = pd.DataFrame({
-        "CODE_GENDER": [gender],
-        "FLAG_OWN_CAR": [own_car],
-        "FLAG_OWN_REALTY": [own_realty],
+        "CODE_GENDER": [gender],  # 1 for Male, 0 for Female
+        "FLAG_OWN_CAR": [own_car],  # 1 for Yes, 0 for No
+        "FLAG_OWN_REALTY": [own_realty],  # 1 for Yes, 0 for No
         "CNT_CHILDREN": [num_children],
         "AMT_INCOME_TOTAL": [income_total],
         "NAME_INCOME_TYPE": [income_type],
         "NAME_EDUCATION_TYPE": [education_type],
         "NAME_FAMILY_STATUS": [family_status],
         "NAME_HOUSING_TYPE": [housing_type],
-        "DAYS_BIRTH": [days_birth],
-        "DAYS_EMPLOYED": [days_employed],
-        "FLAG_MOBIL": [has_mobile],
+        "DAYS_BIRTH": [(today - days_birth).days * -1],  # Negative days to indicate past date
+        "DAYS_EMPLOYED": [(today - days_employed).days * -1],  # Negative days to indicate past date
+        "FLAG_MOBIL": [has_mobile],  # 1 for Yes, 0 for No
         "OCCUPATION_TYPE": [occupation_type],
         "CNT_FAM_MEMBERS": [num_family_members],
-        "begin_month": [begin_month]
-    })
+        "begin_month": [begin_month * -1]  # Negative value to indicate past months
+    })    
 
+    st.write("User Data before convert:")
+    st.dataframe(user_data)
+    
     # Map categorical columns to numerical values using LabelEncoder
     le = LabelEncoder()
-    for x in user_data:
-        if user_data[x].dtypes == 'object':
-            user_data[x] = le.fit_transform(user_data[x])
-
+    for col in user_data.columns:
+        if user_data[col].dtype == object:
+            user_data[col] = le.fit_transform(user_data[col])
+    
+    st.write("User Data after convert:")
+    st.dataframe(user_data)
+    
     # Make prediction
     prediction = model.predict(user_data)
 
