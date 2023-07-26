@@ -66,7 +66,7 @@ This model was configured with a learning rate of 1.0 and 150 estimators.
 
 ![F1 Scores Comparison between models](https://github.com/tutalae/creditcard_approval_prediction/blob/main/results/f1%20scores.png)
 
-In conclusion, the Gradient Boosting model, with a learning rate of 1.0 and 150 estimators, provided the best results in terms of creditworthiness prediction.
+In conclusion, the Gradient Boosting model, with a learning rate of 0.1 and 50 estimators, provided the best results in terms of creditworthiness prediction.
 
 The success of the Gradient Boosting model could be attributed to its gradient boosting framework, which effectively handles both linear and non-linear relationships in the data. Gradient Boosting is an ensemble learning method that sequentially combines predictions from multiple decision trees to minimize the error rate. This allows it to capture complex patterns and interactions between variables that some other models might miss.
 
