@@ -71,3 +71,7 @@ In conclusion, the Gradient Boosting model, with a learning rate of 0.1 and 50 e
 The success of the Gradient Boosting model could be attributed to its gradient boosting framework, which effectively handles both linear and non-linear relationships in the data. Gradient Boosting is an ensemble learning method that sequentially combines predictions from multiple decision trees to minimize the error rate. This allows it to capture complex patterns and interactions between variables that some other models might miss.
 
 However, we acknowledge that this conclusion is based on the specific dataset and experimental setup we used. It would be beneficial to perform additional tests with different data and configurations to validate these findings and further improve the model's performance.
+
+## Deployment
+
+You can try on our application from this ML model here: https://creditcard-approval-m13-project.streamlit.app/
