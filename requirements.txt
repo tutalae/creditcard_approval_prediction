@@ -13,4 +13,3 @@ shap
 evidently
 ydata_profiling
 imblearn
-fastapi
